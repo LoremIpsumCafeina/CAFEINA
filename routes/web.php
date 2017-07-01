@@ -20,7 +20,7 @@ Route::post('/Registrar', 'HomeController@registrar');
 
 Route::post('/logar', 'HomeController@login');
 
-
-
+Route::get('/logout', 'Auth\AuthController@getLogout'); 
+	
 
 Auth::routes();

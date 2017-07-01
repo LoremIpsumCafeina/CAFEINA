@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use Illuminate\Http\Request;
+use estoque\Http\Controllers\Controller;
+use Auth;
+use Session;
+
+class AuthController extends Controller
+{
+
+    public function getLogout(){
+        //echo "auth:" . Auth::user();
+        Auth::logout();
+        Session::flush();
+        return redirect("/");
+    }
+}

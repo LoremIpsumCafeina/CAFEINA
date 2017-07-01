@@ -1,4 +1,4 @@
-@extends('layouts.principal')
+@extends('layouts.principalAuth')
 
 @section('navbarLogado')
 
