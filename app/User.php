@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'photo',
     ];
 
     /**
@@ -27,11 +27,4 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function rules(){
-        return [
-            'name' => 'required|max:60',
-            'email' => 'required|email|max:60|unique:users',
-            'password' => 'required|min:6|confirmed'
-        ];
-    }
 }

@@ -409,12 +409,32 @@ header .navbar-nav a{
 
 }
 
-/*lightbox Modal*/
-.lightBox{
-  display: none;
-  position: absolute;
-  width:100%;
-  height: 100%;
-  background:rgba(0,0,0,0.6);
-  z-index: 98; 
-}
+.modal-background, .modal-background2{
+      display: none;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      min-width: 100%.
+      min-height: 100%;
+      position: fixed;
+      background: rgba(0,0,0,0.3);
+      z-index: 9998;
+    } 
+  
+    .modal, .modal2{
+      position: fixed;
+      display: none;
+      width: 400px;
+      height: 350px;
+      left:50%;
+      margin-left: -200px;
+      top:30%;
+      color:#fff;
+      z-index: 99999;
+      background: #fff; 
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding:20px;
+      border:1px solid #111;
+    }

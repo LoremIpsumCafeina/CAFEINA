@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>
-        Layout
+        @yield('title', 'ArrayEnterprise')
     </title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}"/>
@@ -40,9 +40,9 @@
   </div>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#comments" class="scroll">COMENTÁRIOS</a></li>
-      <li><a href="">LOGAR</a></li>
-      <li><a href="cadastroUsuario" class="scroll">CADASTRAR</a></li>
+      <li><a href="comments" class="scroll">COMENTÁRIOS</a></li>
+      <li><a href="#" class="mostrarModal2">LOGAR</a></li>
+      <li><a href="#" id="mostrarModal" class="mostrarModal">CADASTRAR</a></li>
     </ul>
   </div><!--/.navbar-collapse -->
 </div>
@@ -54,7 +54,7 @@
     <div class="container" >
         <div class="row" >
         <div class="col-xs-6">
-          <a class="logo" href="index.html">ArrayEnterprise</a>
+          <a class="logo" href="index.html">{{$msg or ''}}</a>
         </div>
         <div class="col-xs-6 text-right navbar-nav">
           <a href="#"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
@@ -78,13 +78,13 @@
                                 </li>
                                 <li class="col-xs-6 text-right wow fadeInUp" data-wow-delay="1s">
                                     <i class="fa fa-sign-in" aria-hidden="true"></i><br>
-                                    <a href="" class="btn btn-lg scroll">
+                                    <a href="#" class="btn btn-lg mostrarModal2">
                                     Entrar
                                     </a>
                                 </li>
                                 <li class="col-xs-6 text-right wow fadeInUp" data-wow-delay="1s">
                                     <i class="fa fa-user-o" aria-hidden="true"></i>
-                                    <a href="" class="btn btn-lg scroll">
+                                    <a href="#" class="btn btn-lg mostrarModal">
                                     Cadastrar
                                     </a>
                                 </li>
@@ -106,29 +106,44 @@
 <div>
     
 <!-- Cadastrar -->
-<div class="lightBox1 col-lg-6" id="lightbox1">
-    <p class="text-center">Cadastrar</p>
-    <form action="/Registrar" method="post" class="form">
-        
-        <input class="form-control" type="text" name="name" placeholder="Nome" value="{{old('name')}}" required><br>
-        <input class="form-control" type="email" name="email" placeholder="Email" value="{{old('email')}}" required><br>
-        <input class="form-control" type="password" name="password" placeholder="**********" required><br>
-        
-        <input class="form-control" type="password" name="password_confirmation" placeholder="**********" required>   
-    </form>
+<div class="modal" id="modal">
+    <div>
+        <p class="text-center">Cadastrar</p>
+        <form action="/Registrar" method="post" class="form" id="registrar">
+            {!! csrf_field() !!}
+            <input class="form-control" type="text" name="name" placeholder="Nome" value="{{old('name')}}" required><br>
+            <input class="form-control" type="email" name="email" placeholder="Email" value="{{old('email')}}" required><br>
+            <input class="form-control" type="password" name="password" placeholder="**********" required><br>
+            
+            <input class="form-control" type="password" name="password_confirmation" placeholder="**********" required><br>
+
+            <input type="hidden" name="token" value="">
+            <div id="msgCadastro" class=""></div>
+            <input class="form-control" type="submit" name="registrar" value="Registrar">
+        </form>
+    </div>    
+</div>
+<!-- Logar -->
+<div class="modal2" id="modal2">
+    <div>
+        <p class="text-center">Logar</p>
+        <form action="/logar" method="post" class="form" id="logar">
+            {!! csrf_field() !!}
+            <input class="form-control" type="email" name="email" placeholder="Email" value="{{old('email')}}" required><br>
+            <input class="form-control" type="password" name="password" placeholder="**********" required><br>  
+            
+            <input type="hidden" name="token" value="">
+            <div id="msgLogin" class="navbar-inverse"></div>
+            <input class="form-control" id="inputEntrar" name="logar" type="submit" value="Entrar">
+
+        </form>
+    </div>  
 </div>
 
-<div class="lightBox1 col-lg-6" id="lightbox1">
-    <p class="text-center">Logar</p>
-    <form action="/login" method="post" class="form">
-        
-        <input class="form-control" type="email" name="email" placeholder="Email" value="{{old('email')}}" required><br>
-        <input class="form-control" type="password" name="password" placeholder="**********" required><br>
-          
-    </form>
-</div>
+<div class="modal-background" id="modal-background"></div>
+<div class="modal-background2" id="modal-background2"></div>
+    
 
-</div>
 
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>

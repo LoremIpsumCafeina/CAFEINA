@@ -16,5 +16,11 @@
 
 Route::get('/', 'HomeController@index');
 
+Route::post('/Registrar', 'HomeController@registrar');
+
+Route::post('/logar', 'HomeController@login');
+
+
+
 
 Auth::routes();

@@ -1,4 +1,11 @@
+
+
 $(document).ready(function(){
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
   
   
   //------------------------------------//
@@ -28,17 +35,43 @@ $(document).ready(function(){
   });
   
   
-	//lightbox 
-  $(document).ready(function(){
-  //cadastro cliente
-    $("#cadastroUsuario").click(function(){
-      $("#lightbox1").fadeToggle("fast");
-      $("#lightbox1").fadeToggle("fast");
+  // modal cadastro
+	$(function(){
+    var modalBg = $('.modal-background');
+    var modal = $('.modal');
+
+    $('.mostrarModal').click(function(){
+      modalBg.fadeIn(200);
+      modal.fadeIn(200);
     });
-    $("#cadastroUsuario").click(function(){
-      $("#lightbox1").fadeOut("fast");
-      $("#lightbox1").fadeOut("fast");
+
+    modalBg.click(function(){
+      $(this).fadeOut(200);
+      modal.fadeOut(200);
     });
   });
+
+  // modal login
+  $(function(){
+    var modalBg = $('.modal-background2');
+    var modal = $('.modal2');
+
+    $('.mostrarModal2').click(function(){
+      modalBg.fadeIn(200);
+      modal.fadeIn(200);
+    });
+
+    modalBg.click(function(){
+      $(this).fadeOut(200);
+      modal.fadeOut(200);
+    });
+  });
+
+  
+
+  
+
+
+
   
 });
