@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function rules(){
+        return [
+            'name' => 'required|max:60',
+            'email' => 'required|email|max:60|unique:users',
+            'password' => 'required|min:6|confirmed'
+        ];
+    }
 }

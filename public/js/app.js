@@ -28,5 +28,17 @@ $(document).ready(function(){
   });
   
   
-	
+	//lightbox 
+  $(document).ready(function(){
+  //cadastro cliente
+    $("#cadastroUsuario").click(function(){
+      $("#lightbox1").fadeToggle("fast");
+      $("#lightbox1").fadeToggle("fast");
+    });
+    $("#cadastroUsuario").click(function(){
+      $("#lightbox1").fadeOut("fast");
+      $("#lightbox1").fadeOut("fast");
+    });
+  });
+  
 });
