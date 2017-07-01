@@ -24,14 +24,7 @@
 </head>
 <body>
 
-<!-- Cadastrar -->
-<div class="lightBox1" id="lightbox1">
-    <form action="/Registrar" method="post" class="form">
-        
-        <input class="form-control" type="text" name="name" placeholder="Nome" value="{{old('name')}}" required><br>
 
-    </form>
-</div>
 
 
 <!-- Barra de navegação que aparece quando da scroll down -->
@@ -108,6 +101,32 @@
         
 @yield('comment')
         
+
+</div>
+<div>
+    
+<!-- Cadastrar -->
+<div class="lightBox1 col-lg-6" id="lightbox1">
+    <p class="text-center">Cadastrar</p>
+    <form action="/Registrar" method="post" class="form">
+        
+        <input class="form-control" type="text" name="name" placeholder="Nome" value="{{old('name')}}" required><br>
+        <input class="form-control" type="email" name="email" placeholder="Email" value="{{old('email')}}" required><br>
+        <input class="form-control" type="password" name="password" placeholder="**********" required><br>
+        
+        <input class="form-control" type="password" name="password_confirmation" placeholder="**********" required>   
+    </form>
+</div>
+
+<div class="lightBox1 col-lg-6" id="lightbox1">
+    <p class="text-center">Logar</p>
+    <form action="/login" method="post" class="form">
+        
+        <input class="form-control" type="email" name="email" placeholder="Email" value="{{old('email')}}" required><br>
+        <input class="form-control" type="password" name="password" placeholder="**********" required><br>
+          
+    </form>
+</div>
 
 </div>
 
