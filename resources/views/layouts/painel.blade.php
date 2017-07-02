@@ -1,4 +1,3 @@
-@if(Auth::check())
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -23,34 +22,18 @@
     </style>
 
 </head>
-<body>
+<body id="comentar">
 
-
-@yield('navbarLogado')
-
-
-<div class="container commentsDiv col-lg-8 col-lg-offset-2" id="comments"> 
-    <h2>Comentários do Produto</h2> <hr>
-@yield('inserirComentario')
-
-    
-
-@yield('comment')
-</div>
+    @yield('navbarLogado')
+    @yield('editarCadastro')   
+    @yield('editarComentario')
         
 
 </div>
 <div>
     
-
-<div class="modal-background" id="modal-background"></div>
-<div class="modal-background2" id="modal-background2"></div>
-    
-
-
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/modernizr-2.7.1.js')}}"></script>
 </body>
 </html>
-@endif

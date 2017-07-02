@@ -22,20 +22,18 @@
     </style>
 
 </head>
-<body>
+<body id="comentar">
 
-
-
-@if(Auth::check())
     @yield('navbarLogado')
-@else
-    @yield('navbar')   
-@endif
+    @yield('navbar') 
 
-<div class="container commentsDiv col-lg-8 col-lg-offset-2" id="comments"> 
-    <h2>Comentários do Produto</h2> <hr>
-        
+<br>
+<div class="container commentsDiv col-lg-8 col-lg-offset-2" id="comments" > 
+   
+    <h2 class="">Comentários do Produto</h2> <hr>
+@yield('inserirComentario')
 @yield('comment')
+</div>
         
 
 </div>
@@ -75,6 +73,7 @@
         </form>
     </div>  
 </div>
+
 
 <div class="modal-background" id="modal-background"></div>
 <div class="modal-background2" id="modal-background2"></div>

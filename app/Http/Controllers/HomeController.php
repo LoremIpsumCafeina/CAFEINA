@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
@@ -11,12 +12,14 @@ use Auth;
 class HomeController extends Controller
 {
     private $user;
-    private $comments; 
+    private $comment;
+    private $config; 
     
     
-    public function __construct(User $user)
+    public function __construct(User $user, Comment $comment)
     {   
         $this->user = $user; 
+        $this->comment = $comment;
     }
 
     /**
@@ -24,63 +27,132 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
     public function index()
     {
-        return view('front.index');
+        $loadedComments = $this->carregarComentarios();
+
+        return view('front.index', compact('loadedComments'));
     }
+    
+    //USUARIO
 
     public function registrar(Request $request){
 
         //verificar se já existe um e-mail
         $email = $this->user->where('email', $request->email)->count();
+        
+        $this->validate($request, [
+            'name' => 'required|min:3|max:60',
+            'email' => 'required|max:60|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ]);
 
         if( $email != '0'){
             return redirect('/');//->with('Status', 'Não possível realizar o cadastro, esse e-mail já existe!');
         }
 
         else {
+
             $insert = $this->user->create([
                 'name'  => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
                 'photo' => 'img/users_img/profile_picture.jpg',
             ]);
-
-            return redirect('/');//->with('Status', 'Cadastrado com sucesso!');
+            
+            
+            $loadedComments = $this->carregarComentarios();
+            
+            $this->user = Auth::user();
+            return view('front.index', compact('loadedComments'));
         }
     }
 
     public function login(Request $request){
+            $loadedComments = $this->carregarComentarios();
 
+            $this->validate($request, [
+            'email' => 'required|max:60',
+            'password' => 'required|min:6',
+        ]);
 
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $this->user = Auth::user();
-            $msg = "Logado com sucesso!";
 
-            return view('front.index', compact('msg'));
+            $msgLogin = 'Logado com sucesso!';
+            return view('front.index', compact('loadedComments', 'msgLogin'));
 
         } else {
-            $msg = "Não foi possível logar!";
 
-            return view('front.index', compact('msg'));
+            $msgLogin = 'Usuário ou senha incorretos!';
+            return view('front.index', compact('loadedComments', 'msgLogin'));
         }
             
     }
 
-        
+    public function editarCadastro(){
 
-    
+    }
+
+    //COMENTÁRIO
+
+    public function inserirComentario(Request $request){
+
+            $insert = $this->comment->create([
+                    'user_id' => $request->idUser,
+                    'comment' => $request->comment,
+            ]);
+
+            return redirect('/');
+    }
+
+
+
+    public function carregarComentarios(){
+        $comments = DB::table('comments')->leftJoin('users', 'users.id', '=', 'comments.user_id')->select('comments.*', 'users.photo', 'users.name')->orderBy('comments.updated_at', 'desc')->get();
+        $loadedComments = array();
+
+        foreach($comments as $comment => $data){
+            $loadedComments[$comment]['id'] = $comments[$comment]->id;
+            $loadedComments[$comment]['user_id'] = $comments[$comment]->user_id;
+            $loadedComments[$comment]['name'] = $comments[$comment]->name;
+            $loadedComments[$comment]['comment'] = $comments[$comment]->comment;
+            $loadedComments[$comment]['data'] = date('d/m/Y H:i', strtotime($comments[$comment]->updated_at));
+            $loadedComments[$comment]['photo'] = $comments[$comment]->photo;
+        }
+
+        return $loadedComments;
+    }
+
+    public function carregarComentariosUserId($user_id){
+        $comments = DB::table('comments')->leftJoin('users', 'users.id', '=', 'comments.user_id')->select('comments.*', 'users.photo', 'users.name')->where('users.id', $user_id)->orderBy('comments.updated_at', 'desc')->get();
+        $loadedComments = array();
+
+        foreach($comments as $comment => $data){
+            $loadedComments[$comment]['id'] = $comments[$comment]->id;
+            $loadedComments[$comment]['user_id'] = $comments[$comment]->user_id;
+            $loadedComments[$comment]['name'] = $comments[$comment]->name;
+            $loadedComments[$comment]['comment'] = $comments[$comment]->comment;
+            $loadedComments[$comment]['data'] = date('d/m/Y H:i', strtotime($comments[$comment]->updated_at));
+            $loadedComments[$comment]['photo'] = $comments[$comment]->photo;
+        }
+
+        return $loadedComments;
+    }
+
+    //OUTROS
 
     //Método validator e create
-    protected function validator(array $data)
+    public function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|max:60',
-            'email' => 'required|email|max:60|unique:users',
+            'email' => 'required|max:60|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
     }
+
+    
     /**
      * Create a new user instance after a valid registration.
      *
@@ -89,10 +161,19 @@ class HomeController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        // return User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'password' => bcrypt($data['password']),
+        //     'photo' => 'img/users_img/profile_picture.jpg',
+        // ]);
     }
+
+    public function configuracoes(Request $request){
+        $id = $request->userId;
+        $comentariosUser = $this->carregarComentariosUserId($id);
+        return view('front.configuracoes', compact('comentariosUser'));
+    }
+
+
 }
