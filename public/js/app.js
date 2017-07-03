@@ -116,4 +116,11 @@ $(document).ready(function(){
   
 });
 
+  
+  $('.upload').on("change", function(){
+    alert('Arquivo selecionado!');
+
+  });
+
+  
 

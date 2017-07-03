@@ -29,7 +29,7 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{url('/')}}">COMENTAR</a></li>
-        <li><a href="/Usuario/Configuracoes">CONFIGURAÇÕES</a></li>
+        <li><a href="{{url('/Usuario/Configuracoes')}}">CONFIGURAÇÕES</a></li>
         
         <li><a href="{{ route('logout') }}" onclick="
         event.preventDefault();
@@ -45,8 +45,21 @@
   </div>
   </div>
   @endsection
+  
 
 @section('editarCadastro')
+@if(isset($msg))
+        <script>
+          $(document).ready(function(){
+            $('.modalMsg').fadeIn(750); 
+            $('.modalMsg').fadeOut(2500);
+          });
+        </script>
+
+        <div class="col-md-6 alert alert-success col-lg-offset-3 modalMsg">
+          <p class="text-center">{{$msg}}</p>
+        </div>
+  @endif
 <br><br>
 <div class="container" >
 	<div class="col-lg-12">
@@ -55,23 +68,24 @@
 			<p>Editar Configurações de conta</p>
 		</div>
 		<hr>
-		<div id="profileImgChange" class="col-lg-2" >
+		<div id="profileImgChange" class="col-lg-12" >
 			<ul style="list-style: none;">
 				<li>
-					<a id="uparFoto" href="#">
+					<a id="uparFoto" href="#" onclick="desculpe()">
 					
 					<img src="{{asset('img/users_img/profile_picture.jpg')}}"/>
 					<span style="color: white; font-family: sans-serif;">Alterar </span>
-					</a>	
+					</a>
 				</li>
 			</ul>		
 		</div>
 	
 		<hr>
 		<div class="col-lg-12 editarCadastro">
-		<form action="/" method="post" class="form" id="editarCadastro">
+		<form action="{{url('Usuario/EditarCadastro')}}" method="post" class="form" id="editarCadastro">
             {!! csrf_field() !!}
             <div class="input-group editarNomeDiv">
+              <input type="hidden" name="id" value="{{Auth::User()->id}}">
             	<input class="form-control" id="editarNome" type="text" name="name" placeholder="Nome" value="{{Auth::User()->name}}" aria-describedby="editarNomeBtn" required readonly>
 				<span style="font-size: 20px;" class="btn input-group-addon glyphicon glyphicon-pencil" id="editarNomeBtn"></span>
             </div><br>
@@ -79,21 +93,23 @@
             	<input class="form-control" id="editarEmail" type="email" name="email" placeholder="Email" value="{{Auth::User()->email}}" required readonly>
             	<span style="font-size: 20px;" class="btn input-group-addon glyphicon glyphicon-pencil"></span>
             </div><br>
-            <input class="form-control" type="password" name="current-password" placeholder="Senha atual" required><br>
-            
-            <input class="form-control" type="password" name="password" placeholder="Confirme a senha" required><br>
-            <input class="form-control" type="password" name="password_confirmation" placeholder="Nova Senha" required><br>
-			   	
-				    <input type="file" id="upload" style="display:none">
+            <div onclick="desculpe()">
+            <input class="form-control" type="password" name="current_password" placeholder="Senha atual" ><br>     
+            <input class="form-control" type="password" name="password" placeholder="Confirme a senha" ><br>
+            <input class="form-control" type="password" name="password_confirmation" placeholder="Nova Senha" ><br>
+            </div>
+			   	 
+				    <input type="file" name="photo" id="upload" class="upload" style="display:none">
 
             <input type="hidden" name="token" value="">
   
-            <input class="btn btn-success" type="submit" name="registrar" value="Salvar">
+            <input class="btn btn-success" type="submit" name="salvar" value="Salvar">
         </form>
 
 		</div>
 	</div>
 </div>
+
 
 @endsection
 <br><br>
@@ -115,10 +131,10 @@
                 <span>Postado em: {{$comm['data']}}</span>
         	</div>
         	<div class="editarComentario col-lg-1">
-        		<button class="btn btn-primary"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
+        		<button onclick="desculpe()" class="btn btn-primary"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
         	</div>
         	<div class="excluirComentario col-lg-1">
-        		<button class="btn btn-danger"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button>
+        		<button onclick="desculpe()" class="btn btn-danger"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button>
         	</div>
     	</div>
       <hr>
@@ -132,3 +148,9 @@
 @endsection
 
 @endif 
+
+<script>
+function desculpe(){
+  alert('Desculpe o transtorno, essa funcionalidade ainda será implementada :)');
+}
+</script>

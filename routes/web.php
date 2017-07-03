@@ -19,13 +19,13 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Route::post('/Registrar', 'HomeController@registrar');
 
-Route::post('/logar', 'HomeController@login');
+Route::post('/Logar', 'HomeController@login');
 
 Route::get('/logout', 'Auth\AuthController@getLogout'); 
 
 Route::get('/InserirComentario' , 'HomeController@InserirComentario');
 
-Route::get('Usuario/Editar', 'HomeController@editarCadastro');
+Route::post('Usuario/EditarCadastro', 'HomeController@EditarCadastro');
 Route::post('Usuario/Configuracoes', 'HomeController@configuracoes');
 	
 

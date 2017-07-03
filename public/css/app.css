@@ -532,3 +532,9 @@ transition: 400ms;
 }
  
 .fechar{display:block; text-align:right;}
+
+.modalMsg{
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: none;
+}

@@ -43,7 +43,7 @@
 <div class="modal" id="modal">
     <div>
         <p class="text-center">Cadastrar</p>
-        <form action="/Registrar" method="post" class="form" id="registrar">
+        <form action="{{url('/Registrar')}}" method="post" class="form" id="registrar">
             {!! csrf_field() !!}
             <input class="form-control" type="text" name="name" placeholder="Nome" value="{{old('name')}}" required><br>
             <input class="form-control" type="email" name="email" placeholder="Email" value="{{old('email')}}" required><br>
@@ -61,7 +61,7 @@
 <div class="modal2" id="modal2">
     <div>
         <p class="text-center">Logar</p>
-        <form action="/logar" method="post" class="form" id="logar">
+        <form action="{{url('/Logar')}}" method="post" class="form" id="logar">
             {!! csrf_field() !!}
             <input class="form-control" type="email" name="email" placeholder="Email" value="{{old('email')}}" required><br>
             <input class="form-control" type="password" name="password" placeholder="**********" required><br>  

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use File;
 
 class HomeController extends Controller
 {
@@ -62,9 +63,10 @@ class HomeController extends Controller
             
             
             $loadedComments = $this->carregarComentarios();
-            
             $this->user = Auth::user();
-            return view('front.index', compact('loadedComments'));
+            $msgRegistro = 'Clique em entrar para logar.';
+            
+            return view('front.index', compact('loadedComments', 'msgRegistro'));
         }
     }
 
@@ -79,19 +81,95 @@ class HomeController extends Controller
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $this->user = Auth::user();
 
-            $msgLogin = 'Logado com sucesso!';
-            return view('front.index', compact('loadedComments', 'msgLogin'));
+            $msgLoginSucesso = 'Logado com sucesso!';
+            return view('front.index', compact('loadedComments', 'msgLoginSucesso'));
 
         } else {
 
-            $msgLogin = 'Usuário ou senha incorretos!';
-            return view('front.index', compact('loadedComments', 'msgLogin'));
+            $msgLoginFail = 'Usuário ou senha incorretos!';
+            return view('front.index', compact('loadedComments', 'msgLoginFail'));
         }
             
     }
 
-    public function editarCadastro(){
+    public function EditarCadastro(Request $request){
+        $comentariosUser = $this->carregarComentariosUserId(Auth::user()->id);
 
+        $id = Auth::user()->id;
+        $name = Auth::user()->name;
+        $email = Auth::user()->email;
+        $photo = Auth::user()->photo;
+        $msg = 'Dados atualizados';
+        
+
+        //verificando quais dados foram modificados
+        if($request->name){
+            $name = $request->name;
+            $this->user->where('id', $request->id)
+            ->update([
+            'name' => $name,
+        ]);
+        }
+
+        if(Auth::user()->email != $request->email){
+
+            $email = $request->email;
+            if($request->name){
+            $name = $request->name;
+                $insert = $this->user->where('id', $request->id)
+                ->update([
+                    'email' => $email,
+                ]);
+
+                if(!($insert)){
+                    $msg .= '| Já existe um usuário com este e-mail cadastrado';
+                    return view('front.configuracao', compact('msg'));
+                }
+            }
+            
+        }
+        //upload de foto
+        if($request->file('photo')){
+            $photo = $request->file('photo');
+                  
+            $extensao = strtolower($photo->getClientOriginalExtension());
+            if($extensao == 'jpg' || $extensao == 'png'){
+                $request->file()->move(public_path().'/img/users_img/'.$id.$extensao);
+                $fotoUser = 'img/users_img/'.$id.$extensao;
+                $update = $user->update([
+                        'photo' => $fotoUser,
+                ]);
+                    if($update){
+                        $msg.='| Imagem atualizada.';
+                    }else {
+                        $msg.='| Não foi possível atualizar a imagem.';
+                    }
+            } else{
+                $msg.='| Essa extensão não é permitida';
+            }
+                    
+
+        } 
+
+        if($request->current_password){
+            $current_password = $request->name;
+        }
+
+        if($request->password){
+            $password = $request->password;
+        }
+
+        if($request->password_confirmation){
+            $password_confirmation = $request->password_confirmation;
+        }
+
+        //atualizando todos os dados editados
+        
+
+        $id = $request->id;
+
+        
+        return view('front.configuracoes', compact('name', 'email', 'photo', 'current_password', 'password', 'password_confirmation', 'comentariosUser', 'id', 'msg', 'erros'));
     }
 
     //COMENTÁRIO
@@ -152,7 +230,7 @@ class HomeController extends Controller
         ]);
     }
 
-    
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -170,8 +248,7 @@ class HomeController extends Controller
     }
 
     public function configuracoes(Request $request){
-        $id = $request->userId;
-        $comentariosUser = $this->carregarComentariosUserId($id);
+        $comentariosUser = $this->carregarComentariosUserId(Auth::user()->id);
         return view('front.configuracoes', compact('comentariosUser'));
     }
 

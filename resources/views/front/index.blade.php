@@ -34,44 +34,66 @@
             <a class="logo" href="index.html">{{'ArrayEnterprise'}}</a>
           </div>
           <div class="validation">
-            @if(isset($msgLogin))
-            <a href="#janela1" rel="modal">Janela modal</a>
-            <div class="window alert alert-danger" style="height: 110px;" id="janela1">
-              <a href="#" class="fechar">X Fechar</a>
-              <br>
-              <ul>
-                <li><strong>Usuário ou senha incorretos</strong></li>
-              </ul>
+            @if(isset($msgLoginSucesso))
+                <script>
+              $(document).ready(function(){
+                $('.modalMsg1').fadeIn(750); 
+                $('.modalMsg1').fadeOut(2500);
+              });
+            </script>
+
+            <div class="col-md-6 alert alert-success col-lg-offset-3 modalMsg1" style="background: #222; color: #ddd">
+              <p class="text-center">Clique em entrar para logar!</p>
             </div>
-            <!-- mascara para cobrir o site -->  
-            <div id="mascara"></div>
-            @else
-            <a href="#janela1" rel="modal">Janela modal</a>
-            <div class="window success alert-success" style="height: 110px;" id="janela1">
-              <a href="#" class="fechar">X Fechar</a>
-              <br>
-              <ul>
-                <li><strong>Clique para logar!</strong></li>
-              </ul>
+            @endif
+            @if(isset($msgLoginFail))
+            <script>
+              $(document).ready(function(){
+                $('.modalMsg2').fadeIn(1000);
+                window.setTimeout(esconderModal, 6000);
+                function esconderModal(){
+                  $('.modalMsg2').toggle();
+                }
+                });
+            </script>
+
+            <div class="col-md-6 alert alert-danger col-lg-offset-3 modalMsg2" style="background: #222; color: #ddd">
+              <p class="text-center">Usuário ou senha incorretos.</p>
             </div>
-            <!-- mascara para cobrir o site -->  
-            <div id="mascara"></div>
             @endif
             @if($errors->any())
-            <a href="#janela1" rel="modal">Janela modal</a>
-            <div class="window alert alert-danger" id="janela1">
-              <a href="#" class="fechar">X Fechar</a>
-              <br>
+                <script>
+              $(document).ready(function(){
+                $('.modalMsg3').fadeIn(1000);
+                window.setTimeout(esconderModal, 6000);
+                function esconderModal(){
+                  $('.modalMsg3').toggle();
+                }
+                });
+            </script>
+
+            <div class="col-md-6 col-lg-offset-3 modalMsg3" style="background: #222; color: #ddd">
               <ul>
-              @foreach($errors->all() as $error)
-                <li><strong>{{$error}}</strong></li>
-              @endforeach
+                @foreach($errors->all() as $error)
+                  <li><p>{{$error}}</p></li>
+                @endforeach
               </ul>
             </div>
- 
- 
-            <!-- mascara para cobrir o site -->  
-            <div id="mascara"></div>
+            @endif
+            @if(isset($msgRegistro))
+            <script>
+              $(document).ready(function(){
+                $('.modalMsg2').fadeIn(1000);
+                window.setTimeout(esconderModal, 6000);
+                function esconderModal(){
+                  $('.modalMsg2').toggle();
+                }
+                });
+            </script>
+
+            <div class="col-md-6 alert alert-danger col-lg-offset-3 modalMsg2" style="background: #222; color: #ddd">
+              <p class="text-center">{{$msgRegistro}}</p>
+            </div>
             @endif
           
           </div>
