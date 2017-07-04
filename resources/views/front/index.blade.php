@@ -27,6 +27,17 @@
       
       
   <header>
+      <!-- Configurações desta página CSS -->
+      <style>
+          .modalMsg1, .modalMsg2, .modalMsg3 {
+                background: #444; 
+                color: #ddd;
+                z-index: 1;
+                position: absolute;
+                border: 1px solid #000;
+                border-radius: 10px;
+        }
+      </style>
       <!-- Barra de Navegação do header -->
       <div class="container" >
           <div class="row" >
@@ -42,7 +53,7 @@
               });
             </script>
 
-            <div class="col-md-6 alert alert-success col-lg-offset-3 modalMsg1" style="background: #222; color: #ddd">
+            <div class="col-md-6 col-lg-offset-2 modalMsg1">
               <p class="text-center">Clique em entrar para logar!</p>
             </div>
             @endif
@@ -57,7 +68,7 @@
                 });
             </script>
 
-            <div class="col-md-6 alert alert-danger col-lg-offset-3 modalMsg2" style="background: #222; color: #ddd">
+            <div class="col-md-6 col-lg-offset-2 modalMsg2">
               <p class="text-center">Usuário ou senha incorretos.</p>
             </div>
             @endif
@@ -72,10 +83,10 @@
                 });
             </script>
 
-            <div class="col-md-6 col-lg-offset-3 modalMsg3" style="background: #222; color: #ddd">
+            <div class="col-md-6 col-lg-offset-2 modalMsg3">
               <ul>
                 @foreach($errors->all() as $error)
-                  <li><p>{{$error}}</p></li>
+                  <li class="text-center"><p>{{$error}}</p></li>
                 @endforeach
               </ul>
             </div>
@@ -95,6 +106,7 @@
               <p class="text-center">{{$msgRegistro}}</p>
             </div>
             @endif
+            
           
           </div>
           <div class="col-xs-6 text-right navbar-nav">

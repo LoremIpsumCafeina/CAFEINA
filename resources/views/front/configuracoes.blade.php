@@ -54,6 +54,8 @@
             $('.modalMsg').fadeIn(750); 
             $('.modalMsg').fadeOut(2500);
           });
+
+          
         </script>
 
         <div class="col-md-6 alert alert-success col-lg-offset-3 modalMsg">
@@ -126,16 +128,32 @@
                  <img width="60px" height="60px" src="{{asset($comm['photo'])}}" alt="profile photo"> 
             </div>
             <div class="commentText col-lg-9">
-            	<span style="color: #22f; font-weight: bold;">{{$comm['name']}}:</span> 
-              		{{$comm['comment']}} <br><br>
+              <span class="editarComentario" style="color: #22f; font-weight: bold;">{{$comm['name']}}:</span>
+              <br><br>
+              <form action="{{url('Usuario/editarComentario')}}" class="form" method="post" id="editarComentarioForm">
+              {!! csrf_field() !!}
+                <input type="text" class="form-control" name="comment" value="{{$comm['comment']}}">
+                <input type="number" value="{{$comm['id']}}" name="id" hidden>
+                <input type="submit" id="editarComentarioSubmit" hidden>
+              </form>
+              		<br><br>
                 <span>Postado em: {{$comm['data']}}</span>
         	</div>
-        	<div class="editarComentario col-lg-1">
-        		<button onclick="desculpe()" class="btn btn-primary"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
-        	</div>
-        	<div class="excluirComentario col-lg-1">
-        		<button onclick="desculpe()" class="btn btn-danger"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button>
-        	</div>
+          <div class="col-lg-1">
+  
+            <button class="btn btn-success" onclick="document.getElementById('editarComentarioForm').submit();">
+            <i class="fa fa-check fa-2x" aria-hidden="true"></i></button>
+          </div>
+
+          <div class="col-lg-1">
+          <form action="{{url('/Usuario/ExcluirComentario')}}" method="post" >
+          {!! csrf_field() !!}
+          <input type="number" value="{{$comm['id']}}" name="id" hidden>
+          <button class="btn btn-primary editarComentarioBtn" type="submit"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
+          
+          </form>
+          </div>
+
     	</div>
       <hr>
 		@empty

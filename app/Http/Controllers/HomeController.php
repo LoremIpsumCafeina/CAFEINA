@@ -17,10 +17,13 @@ class HomeController extends Controller
     private $config; 
     
     
+    
+    
     public function __construct(User $user, Comment $comment)
     {   
         $this->user = $user; 
         $this->comment = $comment;
+
     }
 
     /**
@@ -101,7 +104,6 @@ class HomeController extends Controller
         $photo = Auth::user()->photo;
         $msg = 'Dados atualizados';
         
-
         //verificando quais dados foram modificados
         if($request->name){
             $name = $request->name;
@@ -123,30 +125,30 @@ class HomeController extends Controller
 
                 if(!($insert)){
                     $msg .= '| Já existe um usuário com este e-mail cadastrado';
-                    return view('front.configuracao', compact('msg'));
+                    return view('front.configuracoes', compact('msg'));
                 }
             }
             
         }
         //upload de foto
         if($request->file('photo')){
-            $photo = $request->file('photo');
+            // $photo = $request->file('photo');
                   
-            $extensao = strtolower($photo->getClientOriginalExtension());
-            if($extensao == 'jpg' || $extensao == 'png'){
-                $request->file()->move(public_path().'/img/users_img/'.$id.$extensao);
-                $fotoUser = 'img/users_img/'.$id.$extensao;
-                $update = $user->update([
-                        'photo' => $fotoUser,
-                ]);
-                    if($update){
-                        $msg.='| Imagem atualizada.';
-                    }else {
-                        $msg.='| Não foi possível atualizar a imagem.';
-                    }
-            } else{
-                $msg.='| Essa extensão não é permitida';
-            }
+            // $extensao = strtolower($photo->getClientOriginalExtension());
+            // if($extensao == 'jpg' || $extensao == 'png'){
+            //     $request->file()->move(public_path().'/img/users_img/'.$id.$extensao);
+            //     $fotoUser = 'img/users_img/'.$id.$extensao;
+            //     $update = $user->update([
+            //             'photo' => $fotoUser,
+            //     ]);
+            //         if($update){
+            //             $msg.='| Imagem atualizada.';
+            //         }else {
+            //             $msg.='| Não foi possível atualizar a imagem.';
+            //         }
+            // } else{
+            //     $msg.='| Essa extensão não é permitida';
+            // }
                     
 
         } 
@@ -173,8 +175,42 @@ class HomeController extends Controller
     }
 
     //COMENTÁRIO
+    public function editarComentario(Request $request){
+        $comentariosUser = $this->carregarComentariosUserId(Auth::user()->id);
+
+        if($request->comment){
+            $idComment = $request->id;
+            $this->comment->where('id', $idComment)
+            ->update([
+            'comment' => $request->comment,
+            ]);
+            $msg = 'Comentário editado!';
+        }  else {
+            $msg = 'Não foi possível alterar o comentário.';
+        }
+
+        return view('front.configuracoes', compact('comentariosUser', 'msg'));
+    }
+
+    public function excluirComentario(Request $request){
+        $comentariosUser = $this->carregarComentariosUserId(Auth::user()->id);
+
+
+        if($request->id){
+            $id = $request->id;
+            $this->comment->where('id', $id)->delete();
+        
+            $msg = 'Comentário excluido';
+        }  else {
+            $msg = 'Não foi possível excluir o comentário';
+        }
+
+        return view('front.configuracoes', compact('comentariosUser', 'msg'));
+
+    }
 
     public function inserirComentario(Request $request){
+            $comentariosUser = $this->carregarComentariosUserId(Auth::user()->id);
 
             $insert = $this->comment->create([
                     'user_id' => $request->idUser,

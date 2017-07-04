@@ -7,13 +7,13 @@
     <title>
         @yield('title', 'ArrayEnterprise')
     </title>
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}"/>
-    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
+    <link rel="stylesheet" href="{{url('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url('css/app.css')}}"/>
+    <link rel="stylesheet" href="{{url('css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url('css/font-awesome.css')}}">
 
-    <script src="{{asset('js/jquery-3.2.1.js')}}"></script>
-    <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{url('js/jquery-3.2.1.js')}}"></script>
+    <script src="{{url('js/jquery-3.2.1.min.js')}}"></script>
     <style>
         .logoCentral {
             font-size: 400%;
@@ -80,8 +80,8 @@
     
 
 
-<script src="{{asset('js/app.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/modernizr-2.7.1.js')}}"></script>
+<script src="{{url('js/app.js')}}"></script>
+<script src="{{url('js/bootstrap.min.js')}}"></script>
+<script src="{{url('js/modernizr-2.7.1.js')}}"></script>
 </body>
 </html>

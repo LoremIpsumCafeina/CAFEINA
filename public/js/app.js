@@ -122,5 +122,10 @@ $(document).ready(function(){
 
   });
 
+  //editarComentario
+  $(".editarComentarioBtn").click(function(){
+    $("#editarComentarioInput").prop("readonly", false);
+  });
+
   
 

@@ -27,6 +27,9 @@ Route::get('/InserirComentario' , 'HomeController@InserirComentario');
 
 Route::post('Usuario/EditarCadastro', 'HomeController@EditarCadastro');
 Route::post('Usuario/Configuracoes', 'HomeController@configuracoes');
+
+Route::post('Usuario/editarComentario', 'HomeController@editarComentario');
+Route::post('Usuario/ExcluirComentario', 'HomeController@ExcluirComentario');
 	
 
 Auth::routes();
