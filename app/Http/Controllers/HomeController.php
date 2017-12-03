@@ -234,7 +234,7 @@ class HomeController extends Controller
             $loadedComments[$comment]['data'] = date('d/m/Y H:i', strtotime($comments[$comment]->updated_at));
             $loadedComments[$comment]['photo'] = $comments[$comment]->photo;
         }
-
+        die;
         return $loadedComments;
     }
 
