@@ -20,6 +20,7 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::post('/Registrar', 'HomeController@registrar');
 
 Route::get('/content', 'ContentController@content');
+Route::post('/reservar_horario', 'ContentController@reservar_horario');
 
 Route::post('/logar', 'LogarController@logar');
 
