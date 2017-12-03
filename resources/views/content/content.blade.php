@@ -40,34 +40,33 @@
 
               		<button class="button-lab color-purple">Ordenar por</button>
               		<button class="button-lab color-pink">Filtrar</button>
-<!--
+									<hr>
                 @foreach ($laboratorios as $laboratorio)
-                <div class="laboratorio col-md-12" id="laboratorio" >
-                <div class="col-md-4">
-                {{$laboratorio->nome_laboratorio}}
-                </div>
-                <div class="col-md-4">
-                {{$laboratorio->sala}}
-                </div>
-                <div class="col-md-4">
-                {{$laboratorio->unidade}}
-                </div>
-                </div>
-                <br>
-                @endforeach
-            -->
-
-	            <div class="card-list-view">
-					  <h2>
-					Laboratório 105H
-					</h2>
-					  <p>
-					    Laboratório de Arquitetura
-					    </p>
-					    <p>
-					    12:00 - 18:00 <span>disponível</span>
-					    </p>
-					</div>
+								<div class="card-list-view">
+									<h2>
+										Laboratório {{$laboratorio->sala}}
+									</h2>
+									<p>
+										{{$laboratorio->nome_laboratorio}}
+										</p>
+										<p>
+										12:00 - 18:00 <span>{{$laboratorio->status}}</span>
+										</p>
+										<div class="col-md-12">
+											@foreach ($laboratorio_relaciona_maquinas as $key => $laboratorio_maquina)
+											<div class="col-md-1" onclick="$('#form{{$key}}').submit();" style="height: 15px; border: 1px solid #000;
+											@if ($laboratorio_maquina->status == 0)background: green;
+											@elseif($laboratorio_maquina->status == 2)background: purple;@endif">
+												<form id="form{{$key}}" method="post" action="/reservar_horario">
+												{{ csrf_field() }}
+												<input name="id_maquina" type="hidden" value="{{$laboratorio_maquina->id}}">
+												</form>
+											</div>
+											@endforeach
+										</div>
+								</div>
+								<hr>
+								@endforeach
               </div>
               <div id="tabs-3">
                 <div class="card-list-view-users">

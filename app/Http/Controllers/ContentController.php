@@ -24,7 +24,19 @@ class ContentController extends Controller
     }
     public function content(){
     	$laboratorio = DB::table('laboratorio')->get()->toArray();
+        $laboratorio_relaciona_maquina = DB::table('laboratorio_relaciona_maquina')->get()->toArray();
+
+    	return view('content.content')
+            ->with('laboratorios', $laboratorio)
+            ->with('laboratorio_relaciona_maquinas', $laboratorio_relaciona_maquina);
+    }
+
+    public function reservar_horario(Request $request){
+
+        DB::table('laboratorio_relaciona_maquina')
+            ->where('id',  $request->input('id_maquina'))
+            ->update(['status' => 2]);
         
-    	return view('content.content')->with('laboratorios', $laboratorio);
+        return redirect('content');
     }
 }
