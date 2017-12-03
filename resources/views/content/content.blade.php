@@ -6,12 +6,35 @@
         <div class="col-md-12">
             <div id="tabs">
               <ul>
-                <li><a href="#tabs-3">Mensagens</a></li>
+                <li><a href="#tabs-3">Pessoas</a></li>
                 <li><a href="#laboratorios">Laboratórios</a></li>
                 <li><a href="#tabs-1">Projetos</a></li>
               </ul>
               <div id="tabs-1">
-                <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+				<div class="ui card">
+				  <div class="content">
+				    
+				    <img class="ui avatar image" src="#"> Elliot
+				    <div class="meta" style="margin-left: 35px; margin-top: -5px;">14h</div>
+				  </div>
+				  <div class="image">
+				    <img src="#" style="height:200px;">
+				  </div>
+				  <div class="content">
+				    <span class="right floated">
+				      <i class="heart outline like icon"></i>
+				      17 likes
+				    </span>
+				    <i class="comment icon"></i>
+				    3 comments
+				  </div>
+				  <div class="extra content">
+				    <div class="ui large transparent left icon input">
+				      <i class="heart outline icon"></i>
+				      <input type="text" placeholder="Add Comment...">
+				    </div>
+				  </div>
+				</div>
               </div>
               <div id="laboratorios">
 
@@ -48,25 +71,24 @@
               </div>
               <div id="tabs-3">
                 <div class="card-list-view-users">
-<div class="div-avatar-image">
-<img class="avatar-image" src="https://marketingdeconteudo.com/wp-content/uploads/2017/01/formatos-de-imagem-2.jpg"/>
-</div>
-<div class="text-div">
-  <span>
-Nome do usuário
-</span>
-  <span>
-    São Judas (Mooca)
-    </span>
-    <span>
-    Arquitetura
-    </span>
-</div>
-<div class="icon-mail-div">
-<img src="#" class="icon-mail"/>
-</div>
-</div>
-
+					<div class="div-avatar-image">
+						<img class="avatar-image" src="https://marketingdeconteudo.com/wp-content/uploads/2017/01/formatos-de-imagem-2.jpg"/>
+					</div>
+					<div class="text-div">
+					  <span>
+					Nome do usuário
+					</span>
+					  <span>
+					    São Judas (Mooca)
+					    </span>
+					    <span>
+					    Arquitetura
+					    </span>
+					</div>
+					<div class="icon-mail-div">
+						<img src="https://marketingdeconteudo.com/wp-content/uploads/2017/01/formatos-de-imagem-2.jpg" class="icon-mail"/>
+					</div>
+				</div>
               </div>
             </div>
         </div>

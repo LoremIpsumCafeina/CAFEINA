@@ -96,11 +96,14 @@ button.button-lab {
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  width: 30%;
 }
 .card-list-view-users div.div-avatar-image {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 20%;
 }
 .card-list-view-users div.div-avatar-image img.avatar-image {
   width: 70px;
@@ -120,11 +123,12 @@ button.button-lab {
  justify-content: flex-end;
  align-content: end;
  position: relative;
- width: 100%;
+  width: 65%;
 }
 .card-list-view-users div img.icon-mail {
   display: flex;
   align-self: center;
   width:40px;
   height:40px;
+  border-radius: 20px;
 }
