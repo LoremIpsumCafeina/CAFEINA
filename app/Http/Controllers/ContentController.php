@@ -11,7 +11,7 @@ class ContentController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+        
     }
     /**
      * Show the application dashboard.
@@ -22,8 +22,9 @@ class ContentController extends Controller
     {
         return view('home');
     }
-    public function content($id_aluno){
+    public function content(){
     	$laboratorio = DB::table('laboratorio')->get()->toArray();
-    	return $laboratorio;
+        
+    	return view('content.content')->with('laboratorios', $laboratorio);
     }
 }
