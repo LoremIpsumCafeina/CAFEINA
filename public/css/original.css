@@ -197,4 +197,8 @@ button.button-lab {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: baseline;
+    justify-content: center;
+}
+.project-cards {
+    margin: 20px;
 }
