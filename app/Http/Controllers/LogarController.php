@@ -26,8 +26,7 @@ class LogarController extends Controller
        $user = DB::table('aluno')->get()->toArray();
        if($request->input('numero_matricula') == $user[1]->numero_matricula && $request->input('password') == $user[1]->password){
             Auth::user();
-            $laboratorios = app('App\Http\Controllers\ContentController')->content($user[1]->id);
-            return view('content.content')->with('laboratorios', $laboratorios);
+            return redirect('content');
        } else {
             return view('auth.login')->with('retorno', 'Login ou senha incorretos');
        }

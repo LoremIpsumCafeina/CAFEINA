@@ -19,6 +19,8 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Route::post('/Registrar', 'HomeController@registrar');
 
+Route::get('/content', 'ContentController@content');
+
 Route::post('/logar', 'LogarController@logar');
 
 Route::get('/logout', 'Auth\AuthController@getLogout'); 
