@@ -10,7 +10,8 @@
                 <li><a href="#laboratorios">Laboratórios</a></li>
                 <li><a href="#tabs-1">Projetos</a></li>
               </ul>
-              <div id="tabs-1">
+              <div id="tabs-1" style="display: inline-flex; width: 100%;">
+              	<div class="section-card-projects">
 				<div class="ui card">
 				  <div class="content">
 				    
@@ -35,6 +36,61 @@
 				    </div>
 				  </div>
 				</div>
+
+
+
+				<div class="ui card">
+				  <div class="content">
+				    
+				    <img class="ui avatar image" src="https://marketingdeconteudo.com/wp-content/uploads/2017/01/formatos-de-imagem-2.jpg"> Elliot
+				    <div class="meta" style="margin-left: 35px; margin-top: -5px;">14h</div>
+				  </div>
+				  <div class="image">
+				    <img src="https://marketingdeconteudo.com/wp-content/uploads/2017/01/formatos-de-imagem-2.jpg" style="height:200px;">
+				  </div>
+				  <div class="content">
+				    <span class="right floated">
+				      <i class="heart outline like icon"></i>
+				      17 likes
+				    </span>
+				    <i class="comment icon"></i>
+				    3 comments
+				  </div>
+				  <div class="extra content">
+				    <div class="ui large transparent left icon input">
+				      <i class="heart outline icon"></i>
+				      <input type="text" placeholder="Add Comment...">
+				    </div>
+				  </div>
+				</div>
+
+
+				<div class="ui card">
+				  <div class="content">
+				    
+				    <img class="ui avatar image" src="https://marketingdeconteudo.com/wp-content/uploads/2017/01/formatos-de-imagem-2.jpg"> Elliot
+				    <div class="meta" style="margin-left: 35px; margin-top: -5px;">14h</div>
+				  </div>
+				  <div class="image">
+				    <img src="https://marketingdeconteudo.com/wp-content/uploads/2017/01/formatos-de-imagem-2.jpg" style="height:200px;">
+				  </div>
+				  <div class="content">
+				    <span class="right floated">
+				      <i class="heart outline like icon"></i>
+				      17 likes
+				    </span>
+				    <i class="comment icon"></i>
+				    3 comments
+				  </div>
+				  <div class="extra content">
+				    <div class="ui large transparent left icon input">
+				      <i class="heart outline icon"></i>
+				      <input type="text" placeholder="Add Comment...">
+				    </div>
+				  </div>
+				</div>
+			</div>
+
               </div>
               <div id="laboratorios">
 

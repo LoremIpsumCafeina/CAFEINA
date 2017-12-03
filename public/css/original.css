@@ -191,3 +191,10 @@ button.button-lab {
   border-radius: 5px;
   padding: 1px 5px;
 }
+.section-card-projects {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
