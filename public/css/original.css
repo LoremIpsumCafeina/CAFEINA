@@ -84,3 +84,51 @@ button.button-lab {
 .card-list-view p span {
   color: green;
 }
+.card-list-view-users {
+  widows: calc(100%);
+  padding: 1px 10px;
+  font-family: Roboto;
+  background-color: lightgray;
+  display: flex;
+}
+.card-list-view-users div.text-div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 30%;
+}
+.card-list-view-users div.div-avatar-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 20%;
+}
+.card-list-view-users div.div-avatar-image img.avatar-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  margin: 5px;
+}
+.card-list-view-users h2 {
+  color: #8b2fb5;
+}
+.card-list-view p span {
+  color: green;
+}
+.card-list-view-users div.icon-mail-div {
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-end;
+ align-content: end;
+ position: relative;
+  width: 65%;
+}
+.card-list-view-users div img.icon-mail {
+  display: flex;
+  align-self: center;
+  width:40px;
+  height:40px;
+  border-radius: 20px;
+}
