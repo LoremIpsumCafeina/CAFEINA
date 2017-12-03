@@ -11,10 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/laravel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/original.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/semantic.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
@@ -26,6 +23,10 @@
       } );
       </script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <link href="{{ asset('css/laravel.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/original.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/semantic.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script></script>
     <style>
         body {
@@ -37,7 +38,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top background-gradient">
             <div class="container">
                 <div class="navbar-header" >
 
@@ -50,7 +51,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/') }}"  style="color:white;">
                         Connect
                     </a>
                 </div>

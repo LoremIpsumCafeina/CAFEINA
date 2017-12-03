@@ -14,11 +14,11 @@
 				<div class="ui card">
 				  <div class="content">
 				    
-				    <img class="ui avatar image" src="#"> Elliot
+				    <img class="ui avatar image" src="https://marketingdeconteudo.com/wp-content/uploads/2017/01/formatos-de-imagem-2.jpg"> Elliot
 				    <div class="meta" style="margin-left: 35px; margin-top: -5px;">14h</div>
 				  </div>
 				  <div class="image">
-				    <img src="#" style="height:200px;">
+				    <img src="https://marketingdeconteudo.com/wp-content/uploads/2017/01/formatos-de-imagem-2.jpg" style="height:200px;">
 				  </div>
 				  <div class="content">
 				    <span class="right floated">
@@ -94,6 +94,136 @@
         </div>
     </div>
 </div>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" click="$('modal').css('display','block')">Large modal</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-lab">
+  <div class="lab-info">
+    <b><p>Laboratório 101h</p></b>
+    <p>
+      Desenvolvimento e TI
+    </p>
+    <p>13:00 - 18:00 <span class="status">livre</span></p>
+  </div>
+  <br>
+  
+  <div class="lab-config">
+    <p>Configuração do Laboratório:</p>
+    <div class="carrousel-config">
+      <div class="train">
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="lab-locacao">
+  <p>Locação do Laboratório:</p>
+  <div class="micros">
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  </div>
+  <div class="micros">
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  </div>
+  <div class="micros">
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  </div>
+  </div>
+  
+</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="shadow">
+	
+</div>
+<div class="modal-lab" style="display: none;">
+  <div class="lab-info">
+    <b><p>Laboratório 101h</p></b>
+    <p>
+      Desenvolvimento e TI
+    </p>
+    <p>13:00 - 18:00 <span class="status">livre</span></p>
+  </div>
+  <br>
+  
+  <div class="lab-config">
+    <p>Configuração do Laboratório:</p>
+    <div class="carrousel-config">
+      <div class="train">
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+        <img src="#"/>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="lab-locacao">
+  <p>Locação do Laboratório:</p>
+  <div class="micros">
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  </div>
+  <div class="micros">
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  </div>
+  <div class="micros">
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  <img src="#" class="micro-img"/>
+  </div>
+  </div>
+</div>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('body').css('background', '#fff');
