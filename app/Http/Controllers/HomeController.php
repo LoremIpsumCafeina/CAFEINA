@@ -33,9 +33,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $loadedComments = $this->carregarComentarios();
+        
 
-        return view('front.index', compact('loadedComments'));
+        return view('front.index');
     }
     
     //USUARIO

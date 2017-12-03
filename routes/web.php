@@ -19,7 +19,7 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Route::post('/Registrar', 'HomeController@registrar');
 
-Route::post('/Logar', 'HomeController@login');
+Route::post('/logar', 'LogarController@logar');
 
 Route::get('/logout', 'Auth\AuthController@getLogout'); 
 
@@ -30,6 +30,7 @@ Route::post('Usuario/Configuracoes', 'HomeController@configuracoes');
 
 Route::post('Usuario/editarComentario', 'HomeController@editarComentario');
 Route::post('Usuario/ExcluirComentario', 'HomeController@ExcluirComentario');
-	
+
+
 
 Auth::routes();
