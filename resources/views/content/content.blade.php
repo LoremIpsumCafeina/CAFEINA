@@ -12,7 +12,7 @@
               </ul>
               <div id="tabs-1" style="display: inline-flex; width: 100%;">
               	<div class="section-card-projects">
-				<div class="ui card">
+				<div class="ui card project-cards">
 				  <div class="content">
 				    
 				    <img class="ui avatar image" src="https://marketingdeconteudo.com/wp-content/uploads/2017/01/formatos-de-imagem-2.jpg"> Elliot
@@ -39,7 +39,7 @@
 
 
 
-				<div class="ui card">
+				<div class="ui card project-cards">
 				  <div class="content">
 				    
 				    <img class="ui avatar image" src="https://marketingdeconteudo.com/wp-content/uploads/2017/01/formatos-de-imagem-2.jpg"> Elliot
@@ -51,10 +51,10 @@
 				  <div class="content">
 				    <span class="right floated">
 				      <i class="heart outline like icon"></i>
-				      17 likes
+				      59 likes
 				    </span>
 				    <i class="comment icon"></i>
-				    3 comments
+				    200 comments
 				  </div>
 				  <div class="extra content">
 				    <div class="ui large transparent left icon input">
@@ -65,7 +65,7 @@
 				</div>
 
 
-				<div class="ui card">
+				<div class="ui card project-cards">
 				  <div class="content">
 				    
 				    <img class="ui avatar image" src="https://marketingdeconteudo.com/wp-content/uploads/2017/01/formatos-de-imagem-2.jpg"> Elliot
@@ -77,10 +77,10 @@
 				  <div class="content">
 				    <span class="right floated">
 				      <i class="heart outline like icon"></i>
-				      17 likes
+				      29 likes
 				    </span>
 				    <i class="comment icon"></i>
-				    3 comments
+				    6 comments
 				  </div>
 				  <div class="extra content">
 				    <div class="ui large transparent left icon input">
@@ -149,8 +149,6 @@
         </div>
     </div>
 </div>
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" click="$('modal').css('display','block')">Large modal</button>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -282,6 +280,15 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('body').css('background', '#fff');
+		$('.card-list-view').click(function(){
+			$('.modal-lab').css('display','block');
+			$('.shadow').css('display','block');
+
+		});
+		$('.shadow').click(function(){
+			$('.modal-lab').css('display','none');
+			$('.shadow').css('display','none');
+		});
 	});
 </script>
 @endsection
